@@ -8,7 +8,7 @@ export default function ListArticles({ id_corso, durata, descrizione }) {
         <p className="card-text">{descrizione}</p>
       </div>
       <div className="card-footer">
-        <span className="card-text">{durata}</span>
+        <span className="card-text">Durata: {durata}mesi</span>
       </div>
     </div>
   );

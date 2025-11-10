@@ -45,7 +45,8 @@ function App() {
     <>
       <Header />
 
-      <SectionAddArticle />
+      <SectionAddArticle setArticles={setArticles} />
+      {/*SectionAddArticle deve essere in grado di modificare lo "state" articles*/}
 
       {articles.map((art) => (
         <div className="wrapper" key={art.id}>
