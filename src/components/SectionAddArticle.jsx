@@ -21,17 +21,27 @@ export default function SectionAddArticle({ setArticles }) {
 
   return (
     <>
-      <form onSubmit={handle_submit}>
-        <button type="submit">Add Article</button>
-        <label htmlFor="input-article">Add Article: </label>
-        <input
-          type="text"
-          id="input-article"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        ></input>
-        <span>(id - titolo - durata - descrizione)</span>
-      </form>
+      <div className="container d-flex justify-content-center my-4">
+        <form onSubmit={handle_submit} className="w-50">
+          <div className="mb-3">
+            <label htmlFor="input-article" className="form-label">
+              Add Article:{" "}
+            </label>
+            <input
+              type="text"
+              id="input-article"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              className="form-control"
+              placeholder="id - titolo - durata - descrizione"
+            ></input>
+            <span className="form-text">
+              (id - titolo - durata - descrizione)
+            </span>
+          </div>
+          <button type="submit">Add Article</button>
+        </form>
+      </div>
     </>
   );
 }

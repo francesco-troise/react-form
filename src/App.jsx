@@ -1,9 +1,8 @@
 import Header from "./components/Header";
 import SectionAddArticle from "./components/SectionAddArticle";
 import ListArticles from "./components/ListArticles";
-import { useState } from "react";
 import DeleteButton from "./components/DeleteButton";
-//Import di "useState" per aver accesso ad uno "state" che accolga l'array articles
+import { useState } from "react";
 
 function App() {
   const array_articles = [
@@ -36,30 +35,37 @@ function App() {
         "Stellae bellum gerunt, heroēs fortiter adversus tenebras pugnant. Per aspera ad astra",
     },
   ];
-  //Array di dati
 
   const [articles, setArticles] = useState(array_articles);
-  //Dichiarazione dello "state"
 
   return (
     <>
       <Header />
 
-      <SectionAddArticle setArticles={setArticles} />
-      {/*SectionAddArticle deve essere in grado di modificare lo "state" articles*/}
+      <div className="container d-flex justify-content-center my-4">
+        <SectionAddArticle setArticles={setArticles} />
+        {/*SectionAddArticle deve essere in grado di modificare lo "state" articles*/}
+      </div>
 
-      {articles.map((art) => (
-        <div className="wrapper" key={art.id}>
-          <ListArticles {...art} />
-          {/* Il tag "ListArticles" riceve lo spred del singolo oggetto "art" */}
-
-          <DeleteButton
-            articles={articles}
-            delete_ID={art.id}
-            setArticles={setArticles}
-          />
+      <div className="container">
+        <div className="row">
+          {articles.map((art) => (
+            <div className="col-12 mb-4" key={art.id}>
+              <div className="d-flex flex-column h-100">
+                <ListArticles {...art} />
+                {/* Il tag "ListArticles" riceve lo spred del singolo oggetto "art" */}
+                <div className="mt-2">
+                  <DeleteButton
+                    articles={articles}
+                    delete_ID={art.id}
+                    setArticles={setArticles}
+                  />
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </>
   );
 }
